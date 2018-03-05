@@ -1,0 +1,33 @@
+version: '2'
+services:
+  nginx:
+      build:
+          context: ./nginx
+      container_name: devmnginx
+      ports:
+          - "8080:80"
+      volumes:
+          - ./app:/var/app
+      depends_on:
+        - fpm
+        - mysqldb
+  fpm:
+      build:
+          context: ./fpm
+      container_name: devmfpm
+      depends_on:
+        - mysqldb
+      volumes:
+          - ./app:/var/app
+
+  mysqldb:
+      build: mysql
+      container_name: devmysql
+      env_file:
+          - ./.env
+      environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      volumes:
+        - ./data/var/lib/mysql:/var/lib/mysql
+      ports:
+        - "3310:3306"
