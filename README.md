@@ -31,7 +31,7 @@ Technologies used
 
 To run the app:
 ~~~
-docker-compose up --build"
+docker-compose up --build
 ~~~
 
 To run phpunit tests:
