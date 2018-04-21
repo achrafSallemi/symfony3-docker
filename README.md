@@ -29,6 +29,11 @@ Technologies used
 
 ## Usage
 
+To run the app:
+~~~
+docker-compose up --build"
+~~~
+
 To run phpunit tests:
 ~~~
 docker exec -ti devmfpm  sh -c "./vendor/bin/phpunit -c phpunit.xml.dist"
